@@ -10,9 +10,11 @@ const { Panel } = Collapse;
 
 
 const Exchange = () => {
-  const [ searchedTerm, setSearchedTerm ] = React.useState('Bitcoin')
+  const [ searchedTerm, setSearchedTerm ] = React.useState('')
   const { data, isFetching } = useGetCryptoSearchQuery(searchedTerm)
   const searchedData = data?.data
+  // console.log("here exchange")
+  // console.log(searchedData)
   
   if(isFetching) return <Loader />
 
@@ -82,6 +84,7 @@ const Exchange = () => {
                     </Col>
                     <Col span={7}>${millify(coin.price)}</Col>
                     <Col span={7}>{millify(coin.symbol)}</Col>
+                    
                   </Row>
                   )}
               >  

@@ -8,6 +8,8 @@ import News from "./News";
 import Loader from "./Loader";
 const { Title } = Typography;
 
+// import Feature from "./Feature";
+
 const Homepage = () => {
   const { data, isFetching } = useGetCryptosQuery(10);
   const globalStats = data?.data?.stats;

@@ -10,6 +10,7 @@ import Exchange from "./components/Exchange";
 import Cryptocurrencies from "./components/Cryptocurrencies";
 import CryptoDetails from "./components/CryptoDetails";
 import News from "./components/News";
+import Hero from "./components/Hero";
 import "./App.css";
 
 const App = () => {
@@ -22,7 +23,8 @@ const App = () => {
         <Layout>
           <div className="routes">
             <Routes>
-              <Route path="/" element={<Homepage />} />
+            <Route path="/" element={<Hero />} />
+              <Route path="/home" element={<Homepage />} />
               <Route path="/exchanges" element={<Exchange />} />
               <Route path="/cryptocurrencies" element={<Cryptocurrencies />} />
               <Route path="/crypto/:coinId" element={<CryptoDetails />} />
@@ -64,7 +66,7 @@ const App = () => {
           <br />
           <br />
           <div  >
-            <Link style={{ color: "black" , margin:'10px',fontWeight:'600'}} to="/">
+            <Link style={{ color: "black" , margin:'10px',fontWeight:'600'}}  to="/home">
               Home
             </Link>
             
