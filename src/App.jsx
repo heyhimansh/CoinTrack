@@ -2,6 +2,8 @@ import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { Layout, Typography, Space } from "antd";
 
+const { Header, Content, Footer, Sider } = Layout;
+
 import Navbar from "./components/Navbar";
 import Homepage from "./components/Homepage";
 import Exchange from "./components/Exchange";
@@ -28,13 +30,13 @@ const App = () => {
             </Routes>
           </div>
         </Layout>
-        <div className="footer">
+        {/* <div className="footer">
           <Typography.Title
             level={5}
             style={{ color: "white", textAlign: "center" }}
           >
-            CoinTrcak <br />
-            All rights reserved
+            CoinTrack <br />
+            Ant Design ©2023 Created by Ant UED
           </Typography.Title>
           <Space>
             <Link style={{ color: "white" }} to="/">
@@ -47,7 +49,33 @@ const App = () => {
               News
             </Link>
           </Space>
-        </div>
+          
+        </div> */}
+      
+        <Footer
+          style={{
+            textAlign: 'center',
+            
+          }}
+        >
+          <br />
+        <br />
+          Coin Track ©2023 Created by <a href="https://github.com/heyhimansh" target="_blank">Himanshu 🧊 </a>
+          <br />
+          <br />
+          <div  >
+            <Link style={{ color: "black" , margin:'10px',fontWeight:'600'}} to="/">
+              Home
+            </Link>
+            
+            <Link style={{ color: "black" ,margin:'10px',fontWeight:'600'}} to="/exchanges">
+              Exchanges
+            </Link>
+            <Link style={{ color: "black",margin:'10px',fontWeight:'600' }} to="/news">
+              News
+            </Link>
+          </div>
+        </Footer>
       </div>
     </div>
   );

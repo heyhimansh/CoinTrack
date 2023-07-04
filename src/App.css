@@ -324,11 +324,27 @@ width: 70%;
     display: flex;
     justify-content: space-between;
     gap: 50px;
+    align-items: center;
     color: #0071bd;
 }
 .chart-title{
     color: #0071bd !important;
+    display: flex;  
+   
 }
+
+.graph{
+    margin-left: 20px;
+    /* padding:5px; */
+    border-radius:50%;
+
+}
+/* 
+.graph:hover {
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+  } */
+
 .price-container{
     display: flex !important;
     gap: 20px !important;
