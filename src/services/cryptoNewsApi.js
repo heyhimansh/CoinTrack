@@ -1,17 +1,15 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 
-// bing news api
+// https://rapidapi.com/MatcherLabs/api/news-api14
 
 // RAPID API
 
 const cryptoNewsHeaders = {
-  "X-BingApis-SDK": "true",
-  "X-RapidAPI-Key": "fd7558aa61mshcfffaab64eda177p1253c0jsnbb6b43beda6d",
-  "X-RapidAPI-Host": "bing-news-search1.p.rapidapi.com",
+  "X-RapidAPI-Key": "ec36c69e06msh906fe2fdc7a28f3p109687jsn539ca43c9c84",
+  "X-RapidAPI-Host": "news-api14.p.rapidapi.com",
 };
 
-const baseUrl = "https://bing-news-search1.p.rapidapi.com";
-
+const baseUrl = "https://news-api14.p.rapidapi.com";
 const createRequest = (url) => ({ url, headers: cryptoNewsHeaders });
 
 export const cryptoNewsApi = createApi({
@@ -24,7 +22,7 @@ export const cryptoNewsApi = createApi({
     getCryptoNews: builder.query({
       query: ({ newsCategory, count }) =>
         createRequest(
-          `/news/search?q=${newsCategory}&safeSearch=Off&textFormat=Raw&freshness=Day&count=${count}`
+          `/search?q=${newsCategory}&country=us&language=en&pageSize=${count}&publisher=cnn.com%2Cbbc.com`
         ),
     }),
   }),
