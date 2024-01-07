@@ -7,7 +7,10 @@ import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
 import Loader from "./Loader";
 
 const demoImage =
-  "https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News";
+  "https://cdn-icons-png.flaticon.com/512/2965/2965879.png";
+
+const demoOrg =
+  "https://cdn-icons-png.flaticon.com/512/1323/1323734.png";
 
 const { Text, Title } = Typography;
 const { Option } = Select;
@@ -22,7 +25,7 @@ const News = ({ simplified }) => {
 
   console.log(cryptoNews);
 
-  // if (!cryptoNews) return <Loader />;
+  if (!cryptoNews) return <Loader />;
 
   return (
     <Row gutter={[24, 24]}>
@@ -46,44 +49,73 @@ const News = ({ simplified }) => {
         </Col>
       )}
 
-      {cryptoNews.articles.map((news) => (
+      {cryptoNews.data.items.map((news) => (
         <Col xs={24} sm={12} lg={8}>
           <Card hoverable className="news-card">
-            <a href={news.url} target="_blank" rel="noreferrer">
+            <a href={news.link} target="_blank" rel="noreferrer">
               <div className="news-image-container">
                 <Title className="news-title" level={4}>
-                  {news.publisher.name}
+                  {news.title}                 
                 </Title>
                 <img
+                   style={{ maxWidth: '25%', maxHeight: '10%' }}
                   src={demoImage}
                   alt=""
                 />
               </div>
               <p>
-              {news.title}...
+              {news.description}...
               </p>
               <div className="provider-container">
                 <div>
+                
                   <Avatar
                     src={
-                       demoImage
+                      demoOrg
                     }
                     alt=""
                   />
+                  {/* <Avatar src={news.provider[0]?.image?.thumbnail?.contentUrl || demoImage} alt="" /> */}
                   <Text className="provider-name">
-                    {news.publisher.name}
+                  {`${news.title.split(' ')[0]} News`}     
                   </Text>
                 </div>
-                <Text>
+                {/* <Text>
                   {moment(news.published_date).startOf("ss").fromNow()}
-                </Text>
+                </Text> */}
               </div>
             </a>
           </Card>
         </Col>
       ))}
 
-      {/* <Col xs={24} sm={12} lg={8}>
+
+{/* 
+{cryptoNews.value.map((news, i) => (
+        <Col xs={24} sm={12} lg={8} key={i}>
+          <Card hoverable className="news-card">
+            <a href={news.url} target="_blank" rel="noreferrer">
+              <div className="news-image-container">
+                <Title className="news-title" level={4}>{news.name}</Title>
+                <img src={news?.image?.thumbnail?.contentUrl || demoImage} alt="" />
+              </div>
+              <p>{news.description.length > 100 ? `${news.description.substring(0, 100)}...` : news.description}</p>
+              <div className="provider-container">
+                <div>
+                  <Avatar src={news.provider[0]?.image?.thumbnail?.contentUrl || demoImage} alt="" />
+                  <Text className="provider-name">{news.provider[0]?.name}</Text>
+                </div>
+                <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
+              </div>
+            </a>
+          </Card>
+        </Col>
+      ))}
+
+
+
+
+      <Col xs={24} sm={12} lg={8}>
         <Card hoverable className="news-card">
           <a href="#" target="_blank" rel="noreferrer">
             <div className="news-image-container">
